@@ -51,17 +51,17 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
     const notes = fs.readFileSync('./db/db.json')
     const Data = JSON.parse(notes);
-    const noteId = req.body.id;
+    const noteId = req.params.id;
    
     const index = Data.findIndex(note => note.noteId === noteId);
     if(index >= 0) {
         Data.splice(index, 1);
         fs.writeFileSync('./db/db.json', JSON.stringify(Data));
         
-        return res.status(200).send(`Successfully Deleted ${req.body.id} Note!`);
+        return res.status(200).send(`Successfully Deleted ${req.params.id} Note!`);
         
     }else{
-    res.status(404).send(`Note with id ${req.body.id} Cannot be found!`)
+    res.status(404).send(`Note with id ${req.params.id} Cannot be found!`)
     };
     
     
