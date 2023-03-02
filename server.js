@@ -46,8 +46,8 @@ app.post('/api/notes', (req, res) => {
         res.status(404).send('Not Found after post');
     }
 });
-// DELETE Route
 
+// DELETE Route
 app.delete('/api/notes/:id', (req, res) => {
     const notes = fs.readFileSync('./db/db.json')
     const Data = JSON.parse(notes);
