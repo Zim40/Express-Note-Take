@@ -51,7 +51,7 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
     const notes = fs.readFileSync('./db/db.json')
     const Data = JSON.parse(notes);
-    const noteId = req.params.id;
+    const noteId = req.body.id;
    
     const index = Data.findIndex(note => note.noteId === noteId);
     if(index >= 0) {
